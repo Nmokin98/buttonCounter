@@ -30,32 +30,58 @@ class buttonCounters extends State<bodyProgram> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Center(
+        child: Column(
       children: [
-        GestureDetector(onTap: () {
-          setState(() {
-            counter++;
-          });
-        }),
+        GestureDetector(
+            onTap: () {
+              setState(() {
+                if (counter < 100) {
+                  counter++;
+                }
+              });
+            },
+            child: Container(
+              margin: EdgeInsets.only(top: 100),
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
+              child: Center(
+                  child: Text('Нажми',
+                      style: TextStyle(color: Colors.white, fontSize: 50))),
+              width: 200,
+              height: 200,
+            )),
         Container(
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
-            child: Text('Нажми'),
-            width: 80),
-        Container(
-          width: 80,
-          height: 80,
-          decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              border: Border.all(
-                color: Colors.black,
-              )),
-          child: new Text(
-            '$counter',
-            style: TextStyle(fontSize: 10),
-          ),
-        )
+            margin: EdgeInsets.only(top: 100),
+            width: 150,
+            height: 150,
+            decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                border: Border.all(
+                  color: Colors.black,
+                )),
+            child: Center(
+                child: new Text(
+              '$counter',
+              style: TextStyle(fontSize: 70),
+            ))),
+        GestureDetector(
+            onTap: () {
+              setState(() {
+                counter = 0;
+              });
+            },
+            child: Container(
+              margin: EdgeInsets.only(top: 80),
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+              child: Center(
+                  child: Text('Обнулить',
+                      style: TextStyle(color: Colors.white, fontSize: 20))),
+              width: 200,
+              height: 100,
+            )),
       ],
-    );
+    ));
   }
 }
